@@ -1,22 +1,37 @@
 # Tugas2_PengubahMode
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pengalihmode">
+package com.example.pengalihmode;
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.PengalihMode">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+import androidx.appcompat.app.AppCompatActivity;
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
-</manifest>
+public class MainActivity extends AppCompatActivity {
+    ImageView imageView;
+    Button button;
+    Boolean turnOn=false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView=(ImageView)findViewById(R.id.imageView1);
+        button=(Button)findViewById(R.id.button1);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!turnOn) {
+                    imageView.setImageResource(R.drawable.on);
+                    turnOn = true;
+                } else {
+                    imageView.setImageResource(R.drawable.off);
+                    turnOn = false;
+                }
+            }
+        });
+    }
+}
